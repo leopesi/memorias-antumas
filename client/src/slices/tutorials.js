@@ -1,8 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import TutorialDataService from "../services/TutorialServices";
-
-
-
+import TutorialDataService from "../services/TutorialService";
 
 const initialState = [];
 

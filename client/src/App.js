@@ -1,8 +1,7 @@
 import React from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
-
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 
 import AddTutorial from "./components/AddTutorial";
 import Tutorial from "./components/Tutorial";
@@ -10,10 +9,11 @@ import TutorialsList from "./components/TutorialsList";
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <nav className="navbar navbar-expand navbar-dark bg-dark">
         <a href="/tutorials" className="navbar-brand">
-          Memórias Ântumas 
+          Memórias Ântumas
+          
         </a>
         <div className="navbar-nav mr-auto">
           <li className="nav-item">
@@ -37,7 +37,7 @@ function App() {
           <Route path="/tutorials/:id" element={<Tutorial/>} />
         </Routes>
       </div>
-    </BrowserRouter>
+    </Router>
   );
 }
 

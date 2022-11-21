@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useParams, useNavigate } from "react-router-dom"; 
+import { useParams, useNavigate } from 'react-router-dom';
 import { updateTutorial, deleteTutorial } from "../slices/tutorials";
-import TutorialDataService from "../services/TutorialServices";
+import TutorialDataService from "../services/TutorialService";
 
 const Tutorial = (props) => {
   const { id }= useParams();
-
-
-
   let navigate = useNavigate();
   
   const initialTutorialState = {

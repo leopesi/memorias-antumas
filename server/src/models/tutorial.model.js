@@ -2,7 +2,7 @@ const db = require("../db/db");
 
 const Sequelize = require('sequelize');
 
-const User = db.define('tutorial', {
+const Tutorial = db.define('tutorial', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -23,6 +23,6 @@ const User = db.define('tutorial', {
 
 
 //Verifica e faz alteração na tabela caso exista alguma
-User.sync({alter: true})
+//Tutorial.sync({alter: true})
 
-module.exports = User;
+module.exports = Tutorial;

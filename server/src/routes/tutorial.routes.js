@@ -1,11 +1,12 @@
-const routes = require('express').Router
+const routes = require('express').Router();
+const postController = require('../controllers/tutorial.controller')
 
-//Metodo de peticion
-routes.post('/tutorials/add');
-routes.get('/tutorials', userController.find);
-routes.get('/tutorials/:id', userController.findById);
-//routes.put('/tutorials/:id', userController.update);
-//routes.delete('/tutorials/:id', checkToken, userController.deleteById);
+//Rotas
+routes.post('/tutorials', postController.create);
+routes.get('/tutorials', postController.find);
+routes.get('/tutorials/:id', postController.findById);
+routes.put('/tutorials/:id', postController.update);
+routes.delete('/tutorials/:id', postController.deleteById);
 
 //Modulo
 module.exports = routes;
