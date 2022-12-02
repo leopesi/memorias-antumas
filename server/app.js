@@ -11,10 +11,9 @@ app.use(cors())
 app.use(express.urlencoded({ extended: true }));
 app.use(require('./src/routes/index.routes'))
 
-app.get('/', (req, res) => res.send('Hello World!'))
+// database
+require("./src/db/db")
+
+//app.get('/', (req, res) => res.send('Hello World!'))
 
 app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`))
-
-lista = {
-
-}
