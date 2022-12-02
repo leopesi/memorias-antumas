@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 require('dotenv').config()
 
-//Credenciais
+//Credenciais5ijj nmn 0i6y
 const DB_DATABASE = process.env.DB_DATABASE
 const DB_USER = process.env.DB_USER
 const DB_PASS = process.env.DB_PASS
@@ -18,4 +18,16 @@ sequelize.authenticate()
     console.log('Erro na conexão com o localhost!');
 })
 
-module.exports = sequelize
+//sequelize.sync({force: true}).then(() => {console.log('Drop and Resync Db');});
+
+db = {}
+
+db.sequelize = sequelize
+db.Sequelize = Sequelize
+
+db.comment = require('../models/comment.model')(sequelize,Sequelize)
+db.tutorial = require('../models/tutorial.model')(sequelize,Sequelize)
+
+
+
+module.exports = db;
