@@ -1,8 +1,9 @@
-const CRUD = require('../controllers/crud')
+const db = require("../db/db");
+const Tutorial = db.tutorial;
 
 var postController = {
     create: create,
-    find: find,
+    findAll: findAll,
     findById: findById,
     update: update,
     deleteById: deleteById
@@ -23,18 +24,18 @@ async function create(req, res) {
         description
     }
     try {
-        await CRUD.create(tutorial)
+        await Tutorial.create(tutorial)
         res.status(201).json({msg: "Tutorial criado!"})
         console.log('Tutorial criado com éxito!')
     }
     catch {
-        console.log(error)
+        console.log(tutorial)
         res.status(500).json({msg: "Erro no servidor!"})
     }
 };
-console.log('3º - Controller')
-async function find(req, res) {
-    CRUD.findAll().
+
+async function findAll(req, res) {
+    await Tutorial.findAll().
 
         then((data) => {
             res.send(data);
@@ -47,7 +48,7 @@ async function find(req, res) {
 };
 
 async function findById(req, res) {
-    CRUD.findById(req.params.id).
+    await Tutorial.findByPk(req.params.id).
         then((data) => {
             res.send(data)
             console.log('Tutorial encontrado.')
@@ -63,7 +64,8 @@ async function update(req, res) {
         title,
         description,
     };
-    CRUD.update(tutorial, req.params.id).
+
+    Tutorial.update(tutorial, { where: { id: req.params.id } }).
         then((data) => {
             res.status(200).json({
                 message: "Updated successfully",
@@ -78,7 +80,7 @@ async function update(req, res) {
 };
 
 async function deleteById(req, res) {
-    CRUD.deleteById(req.params.id).
+    Tutorial.destroy({ where: { id: req.params.id } }).
         then((data) => {
             res.status(200).json({
                 message: "Deleted successfully",
