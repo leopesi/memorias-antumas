@@ -9,8 +9,9 @@ var postComment = {
     deleteById: deleteById
 }
 async function create(req, res) {
-    console.log(`req.body.text -> ${req.body.text}`)
+
     const {name, text} = req.body
+    const tutorialId = req.params.id
         
     if (!name) {
         return res.status(422).json({message: 'O nome é obrigatório!'})
@@ -22,7 +23,7 @@ async function create(req, res) {
     const comment = {
         name,
         text,
-        //tutorialId: 1,
+        tutorialId,
     }
     try {
         await Comment.create(comment)
