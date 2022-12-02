@@ -28,6 +28,10 @@ db.Sequelize = Sequelize
 db.comment = require('../models/comment.model')(sequelize,Sequelize)
 db.tutorial = require('../models/tutorial.model')(sequelize,Sequelize)
 
-
+db.tutorial.hasMany(db.comment, { as: "comment" });
+db.comment.belongsTo(db.tutorial, {
+  foreignKey: "tutorialId",
+  as: "tutorial",
+});
 
 module.exports = db;
